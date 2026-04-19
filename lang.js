@@ -1,7 +1,7 @@
 const translations = {
     vi: {
-        title: "Made For Lala 🎁",
-        description: "Một món quà đầy yêu thương đang chờ bạn khám phá! Nhấn để xem lời chúc đặc biệt!",
+        title: "Happy Sweet 17 Lala 🎁",
+        description: "Món quà Sweet 17 đặc biệt dành cho Lala! Nhấn để xem lời chúc nhé! 🎁",
         login: "Đăng nhập bằng Google",
         logout: "Đăng xuất",
         settings: "Cài Đặt Trang Web",
@@ -133,8 +133,8 @@ const translations = {
         paypalPaymentDesc: "Dành cho người dùng quốc tế",
     },
     en: {
-        title: "Special Gift for You 🎁",
-        description: "A special gift is waiting for you to discover! Press to see the special message!",
+        title: "Happy Sweet 17 Lala 🎁",
+        description: "A special Sweet 17 gift for Lala! Click to see the message! 🎁",
         login: "Sign in with Google",
         logout: "Logout",
         settings: "Website Settings",

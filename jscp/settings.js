@@ -25,7 +25,7 @@ let settings = {
         // --- Lembar 2 (data-page="1") ---
         { 
             image: './image/photos/lala7.jpeg', // Lembar 2
-            content: 'Happy birthday ya! Semoga sehat selalu, makin sukses, dan dilancarkan semua urusannya. Thanks udah jadi temen yang asik.' 
+            content: 'Happy 17th Birthday Lala! Welcome to the Sweet 17 club! Semoga di usia yang baru ini kamu makin dewasa, makin sukses, dan semua impianmu tercapai. Thanks for being such an amazing friend! ✨' 
         },
         { 
             image: './image/photos/lala1.jpeg', // Lembar 2 kanan
@@ -34,7 +34,7 @@ let settings = {
         // --- Lembar 3 (data-page="2") ---
         { 
             image: './image/theend.jpg', // Menggantikan tbutvj.png (Index 4)
-            content: 'Semoga apa yang disemogakan bisa terwujud tahun ini. Tetep semangat jalanin hari-hari, jangan lupa bahagia, dan kurang-kurangin cueknya! 🎉' 
+            content: 'Enjoy your Sweet 17! Tetap jadi pribadi yang ceria, terus kejar cita-citamu, dan jangan lupa untuk selalu bahagia di setiap langkahmu. Happy Birthday! 🎉🎂' 
         }
     ],
     enableBook: true,
@@ -368,7 +368,7 @@ function initializeDefaultSettings() {
             // --- Lembar 2 (data-page="1") ---
             { 
                 image: './image/photos/lala7.jpeg', // Lembar 2
-                content: 'Happy birthday ya! Semoga sehat selalu, makin sukses, dan dilancarkan semua urusannya. Thanks udah jadi temen yang asik.' 
+                content: 'Happy 17th Birthday Lala! Welcome to the Sweet 17 club! Semoga di usia yang baru ini kamu makin dewasa, makin sukses, dan semua impianmu tercapai. Thanks for being such an amazing friend! ✨' 
             },
             { 
                 image: './image/photos/lala1.jpeg', // Lembar 2 kanan
@@ -377,7 +377,7 @@ function initializeDefaultSettings() {
             // --- Lembar 3 (data-page="2") ---
             { 
                 image: './image/photos/lala10.jpeg', // Lembar 3
-                content: 'Semoga apa yang disemogakan bisa terwujud tahun ini. Tetep semangat jalanin hari-hari, jangan lupa bahagia, dan kurang-kurangin cueknya! 🎉' 
+                content: 'Enjoy your Sweet 17! Tetap jadi pribadi yang ceria, terus kejar cita-citamu, dan jangan lupa untuk selalu bahagia di setiap langkahmu. Happy Birthday! 🎉🎂' 
             }
         ]
     };
