@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Made For Anita 🎁</title>
+    <title>Happy Birthday Lala 🎁</title>
     <meta name="language" content="zh-CN">
     <meta name="description" content="Một món quà đầy yêu thương đang chờ bạn khám phá! Nhấn để xem lời chúc đặc biệt!">
 
@@ -13,7 +13,7 @@
     <link rel="apple-touch-icon" href="image/logo.png">
 
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Made For Anita 🎁">
+    <meta property="og:title" content="Happy Birthday Lala 🎁">
     <meta property="og:description"
         content="Một món quà đầy yêu thương đang chờ bạn khám phá! Nhấn để xem lời chúc đặc biệt!">
     <meta property="og:image" content="https://happybirthdaydeargift.vercel.app/image/logo.png">
@@ -22,7 +22,7 @@
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Made For Anita 🎁">
+    <meta name="twitter:title" content="Happy Birthday Lala 🎁">
     <meta name="twitter:description"
         content="Một món quà đầy yêu thương đang chờ bạn khám phá! Nhấn để xem lời chúc đặc biệt!">
     <meta name="twitter:image" content="https://happybirthdaydeargift.vercel.app/image/birthday-gift.jpg">
@@ -126,6 +126,111 @@
         <button class="settings-button" id="settingsButton" title="Settings" style="display: none;">
             ⚙
         </button>
+
+        <!-- Camera Gallery Button -->
+        <button class="gallery-btn" id="galleryBtn" title="Lihat Foto Lala 📷" style="display:none;">
+            📷
+        </button>
+
+        <!-- Music Gallery Button -->
+        <button class="music-gallery-btn" id="musicGalleryBtn" title="Lala's Favorite Songs 🎵" style="display:none;">
+            🎵
+        </button>
+
+        <!-- Secret Letter Button -->
+        <button class="letter-btn" id="letterBtn" title="Buka Surat ✉️" style="display:none;">
+            ✉️
+        </button>
+
+        <!-- Photo Gallery Modal -->
+        <div id="galleryModal" class="gallery-modal">
+            <div class="gallery-modal-content">
+                <div class="gallery-modal-header">
+                    <h2>📷 Gallery Foto Lala</h2>
+                    <span class="gallery-close" id="galleryClose">×</span>
+                </div>
+                <div class="gallery-grid" id="galleryGrid">
+                    <div class="gallery-item" data-caption="Temen paling asik buat diajak nongkrong! ☕">
+                        <img src="./image/photos/lala1.jpeg" alt="Lala 1" loading="lazy">
+                        <div class="gallery-caption">Temen paling asik buat diajak nongkrong! ☕</div>
+                    </div>
+                    <div class="gallery-item" data-caption="Kalo udah cerita, lupa waktu deh haha 😆">
+                        <img src="./image/photos/lala2.jpeg" alt="Lala 2" loading="lazy">
+                        <div class="gallery-caption">Kalo udah cerita, lupa waktu deh haha 😆</div>
+                    </div>
+                    <div class="gallery-item" data-caption="The real definition of partner in crime 🤜🤛">
+                        <img src="./image/photos/lala3.jpeg" alt="Lala 3" loading="lazy">
+                        <div class="gallery-caption">The real definition of partner in crime 🤜🤛</div>
+                    </div>
+                    <div class="gallery-item" data-caption="Sering random tapi kocak abis ✌️">
+                        <img src="./image/photos/lala4.jpeg" alt="Lala 4" loading="lazy">
+                        <div class="gallery-caption">Sering random tapi kocak abis ✌️</div>
+                    </div>
+                    <div class="gallery-item" data-caption="Paling sabar dengerin curhatan ga penting 🙉">
+                        <img src="./image/photos/lala5.jpeg" alt="Lala 5" loading="lazy">
+                        <div class="gallery-caption">Paling sabar dengerin curhatan ga penting 🙉</div>
+                    </div>
+                    <div class="gallery-item" data-caption="Si paling sibuk tapi tetep nyempetin waktu 📅">
+                        <img src="./image/photos/lala6.jpeg" alt="Lala 6" loading="lazy">
+                        <div class="gallery-caption">Si paling sibuk tapi tetep nyempetin waktu 📅</div>
+                    </div>
+                    <div class="gallery-item" data-caption="Bestie yang selalu ada di saat seneng & susah 🌟">
+                        <img src="./image/photos/lala7.jpeg" alt="Lala 7" loading="lazy">
+                        <div class="gallery-caption">Bestie yang selalu ada di saat seneng & susah 🌟</div>
+                    </div>
+                    <div class="gallery-item" data-caption="Ketawanya nular banget gila 🤣">
+                        <img src="./image/photos/lala8.jpeg" alt="Lala 8" loading="lazy">
+                        <div class="gallery-caption">Ketawanya nular banget gila 🤣</div>
+                    </div>
+                    <div class="gallery-item" data-caption="Gaya boleh kalem, aslinya lawak 😝">
+                        <img src="./image/photos/lala9.jpeg" alt="Lala 9" loading="lazy">
+                        <div class="gallery-caption">Gaya boleh kalem, aslinya lawak 😝</div>
+                    </div>
+                    <div class="gallery-item" data-caption="Happy birthday! Jangan bosen jadi temen gue ya 🎉">
+                        <img src="./image/photos/lala10.jpeg" alt="Lala 10" loading="lazy">
+                        <div class="gallery-caption">Happy birthday! Jangan bosen jadi temen gue ya 🎉</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Lightbox -->
+            <div class="gallery-lightbox" id="galleryLightbox">
+                <span class="lightbox-close" id="lightboxClose">×</span>
+                <button class="lightbox-prev" id="lightboxPrev">&#8249;</button>
+                <div class="lightbox-content-wrapper">
+                    <img class="lightbox-img" id="lightboxImg" src="" alt="">
+                    <div class="lightbox-caption" id="lightboxCaption"></div>
+                </div>
+                <button class="lightbox-next" id="lightboxNext">&#8250;</button>
+            </div>
+        </div>
+
+        <!-- Music Gallery Modal -->
+        <div id="musicGalleryModal" class="gallery-modal">
+            <div class="gallery-modal-content music-modal-content">
+                <div class="gallery-modal-header">
+                    <h2>🎵 Lala's Favorite Songs</h2>
+                    <span class="gallery-close" id="musicGalleryClose">×</span>
+                </div>
+                <div class="music-grid">
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0jkjiF0f9c7EpJRUJ47bvi?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3wlLknnMtD8yZ0pCtCeeK4?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6xrP29JvvYP5ftteZ7nubf?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Secret Letter Modal -->
+        <div id="letterModal" class="gallery-modal">
+            <div class="gallery-modal-content letter-modal-content">
+                <div class="gallery-modal-header" style="background: linear-gradient(135deg, rgba(255, 204, 0, 0.15), rgba(255, 153, 0, 0.1)); border-bottom-color: rgba(255, 204, 0, 0.2);">
+                    <h2 style="color: #ffcc00;">✉️ Secret Message</h2>
+                    <span class="gallery-close" id="letterClose" style="color: #ffcc00;">×</span>
+                </div>
+                <div class="letter-body">
+                    <p id="typewriterText"></p>
+                </div>
+            </div>
+        </div>
 
         <!-- Settings hint element -->
         <div id="settingsHint" class="settings-hint">

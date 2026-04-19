@@ -7,10 +7,10 @@ let settings = {
     music: 'music/hbdmusic1.mp3',
     countdown: 3,
     matrixText: 'HAPPYBIRTHDAY',
-    matrixColor1: '#ff69b4', // Màu pink mẫu
-    matrixColor2: '#ff1493', // Màu pink mẫu
-    sequence: 'HAPPY|BIRTHDAY|TO|ANITA|❤',
-    sequenceColor: '#ff69b4', // Màu pink mẫu
+    matrixColor1: '#00b4ff', // Warna biru
+    matrixColor2: '#0066ff', // Warna biru gelap
+    sequence: 'HAPPY|BIRTHDAY|TO|LALA|❤',
+    sequenceColor: '#00b4ff', // Warna biru
     gift: './image/happy3.gif',
     enableBook: true,
     pages: [
@@ -19,16 +19,16 @@ let settings = {
             image: './image/theend.jpg', // Menggantikan bolsw2.png (Index 0)
         },
         { 
-            image: './image/photos/b1.png', // Menggantikan lhvuck.png (Index 1)
+            image: './image/photos/lala6.jpeg', // Lembar 1
         },
 
         // --- Lembar 2 (data-page="1") ---
         { 
-            image: './image/photos/b2.png', // Menggantikan fjr3qh.png (Index 2)
-            content: 'Happy Birthday Sayang 💗' 
+            image: './image/photos/lala7.jpeg', // Lembar 2
+            content: 'Happy Birthday orang mati rasa 😝' 
         },
         { 
-            image: './image/photos/b3.png', // Menggantikan 8u5tf7.png (Index 3)
+            image: './image/photos/lala1.jpeg', // Lembar 2 kanan
         },
 
         // --- Lembar 3 (data-page="2") ---
@@ -197,9 +197,9 @@ stopMusicPreview();
 // Định nghĩa các mẫu màu sẵn (chỉ 3 mẫu + tùy chỉnh)
 const colorThemes = {
     pink: {
-        matrixColor1: '#ff69b4',
-        matrixColor2: '#ff1493',
-        sequenceColor: '#ff69b4',
+        matrixColor1: '#00b4ff',
+        matrixColor2: '#0066ff',
+        sequenceColor: '#00b4ff',
         name: 'Hồng ngọt ngào'
     },
     blue: {
@@ -347,10 +347,10 @@ function initializeDefaultSettings() {
         music: './music/hbdmusic1.mp3',
         countdown: 3,
         matrixText: 'HAPPYBIRTHDAY',
-        matrixColor1: '#ff69b4', // Màu pink mẫu
-        matrixColor2: '#ff1493', // Màu pink mẫu
-        sequence: 'HAPPY|BIRTHDAY|TO|ANITA|❤',
-        sequenceColor: '#ff69b4', // Màu pink mẫu
+        matrixColor1: '#00b4ff', // Warna biru
+        matrixColor2: '#0066ff', // Warna biru gelap
+        sequence: 'HAPPY|BIRTHDAY|TO|LALA|❤',
+        sequenceColor: '#00b4ff', // Warna biru
         gift: './image/happy3.gif',
         enableBook: true,
         enableHeart: true,
@@ -362,21 +362,21 @@ function initializeDefaultSettings() {
                 image: './image/theend.jpg', // Menggantikan bolsw2.png (Index 0)
             },
             { 
-                image: './image/photos/b1.png', // Menggantikan lhvuck.png (Index 1)
+                image: './image/photos/lala6.jpeg', // Lembar 1
             },
 
             // --- Lembar 2 (data-page="1") ---
             { 
-                image: './image/photos/b2.png', // Menggantikan fjr3qh.png (Index 2)
-                content: 'Happy Birthday Sayang 💗' 
+                image: './image/photos/lala7.jpeg', // Lembar 2
+                content: 'Happy Birthday orang mati rasa 😛' 
             },
             { 
-                image: './image/photos/b3.png', // Menggantikan 8u5tf7.png (Index 3)
+                image: './image/photos/lala1.jpeg', // Lembar 2 kanan
             },
 
             // --- Lembar 3 (data-page="2") ---
             { 
-                image: './image/photos/b5.png', // Menggantikan tbutvj.png (Index 4)
+                image: './image/photos/lala10.jpeg', // Lembar 3
                 content: 'As long as you’re smiling, I’m happy. Stay happy, my love.' 
             }
         ]

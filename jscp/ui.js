@@ -666,7 +666,7 @@ S.ShapeBuilder = (function () {
     var shapeCanvas = document.createElement('canvas'),
         shapeContext = shapeCanvas.getContext('2d'),
         fontSize = 500,
-        fontFamily = 'Avenir, Helvetica Neue, Helvetica, Arial, sans-serif';
+        fontFamily = '"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", Avenir, Helvetica Neue, Helvetica, Arial, sans-serif';
     //    fontFamily = 'Pacifico, Arial, sans-serif';
 
     // Điều chỉnh gap dựa trên thiết bị
@@ -970,6 +970,14 @@ function showBook() {
                 }, 800);
             });
         });
+        // Tampilkan tombol galeri
+        const galleryBtn = document.getElementById('galleryBtn');
+        if (galleryBtn) galleryBtn.style.display = 'flex';
+        const musicGalleryBtn = document.getElementById('musicGalleryBtn');
+        if (musicGalleryBtn) musicGalleryBtn.style.display = 'flex';
+        // Tampilkan tombol surat
+        const letterBtn = document.getElementById('letterBtn');
+        if (letterBtn) letterBtn.style.display = 'flex';
     }
 
 }
@@ -1252,10 +1260,16 @@ function typewriterEffect(element, text, speed = 50) {
         element.innerHTML = '';
         let i = 0;
         let lastScrollTime = 0;
+        const chars = Array.from(text);
 
         function type() {
-            if (i < text.length) {
-                element.innerHTML += text.charAt(i);
+            if (i < chars.length) {
+                let char = chars[i];
+                if (char.length > 1 || char.codePointAt(0) > 8000) {
+                    element.innerHTML += `<span style="-webkit-text-fill-color: initial; display: inline-block;">${char}</span>`;
+                } else {
+                    element.innerHTML += char;
+                }
                 i++;
 
                 // Throttle scroll updates
@@ -1477,6 +1491,30 @@ function toggleMusic() {
 
 musicControl.addEventListener('click', toggleMusic);
 
+// Attempt to autoplay on load
+const tryAutoplay = () => {
+    if (!isPlaying) {
+        birthdayAudio.play().then(() => {
+            musicControl.innerHTML = '⏸';
+            musicControl.classList.add('playing');
+            musicControl.title = 'Pause Music';
+            isPlaying = true;
+        }).catch(err => {
+            // Autoplay blocked by browser, wait for first click anywhere
+            const playOnInteract = () => {
+                if (!isPlaying) toggleMusic();
+                document.body.removeEventListener('click', playOnInteract);
+                document.body.removeEventListener('touchstart', playOnInteract);
+            };
+            document.body.addEventListener('click', playOnInteract);
+            document.body.addEventListener('touchstart', playOnInteract, { passive: true });
+        });
+    }
+};
+
+window.addEventListener('DOMContentLoaded', tryAutoplay);
+tryAutoplay();
+
 birthdayAudio.addEventListener('ended', () => {
 });
 
@@ -1686,3 +1724,162 @@ if (book) {
     book.addEventListener('mousedown', forcePlayMusic, { once: true });
     book.addEventListener('click', forcePlayMusic, { once: true });
 }
+
+// ============================
+// GALLERY LOGIC
+// ============================
+(function() {
+    const galleryBtn    = document.getElementById('galleryBtn');
+    const galleryModal  = document.getElementById('galleryModal');
+    const galleryClose  = document.getElementById('galleryClose');
+    const galleryItems  = document.querySelectorAll('.gallery-item img');
+    const lightbox      = document.getElementById('galleryLightbox');
+    const lightboxImg   = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev  = document.getElementById('lightboxPrev');
+    const lightboxNext  = document.getElementById('lightboxNext');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+
+    let currentIndex = 0;
+    const images = Array.from(galleryItems);
+
+    function openGallery() {
+        galleryModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeGallery() {
+        galleryModal.classList.remove('active');
+        closeLightbox();
+        document.body.style.overflow = '';
+    }
+
+    function updateLightboxContent(index) {
+        lightboxImg.src = images[index].src;
+        // set caption
+        if (lightboxCaption) {
+            const caption = images[index].closest('.gallery-item').getAttribute('data-caption');
+            lightboxCaption.textContent = caption || '';
+        }
+    }
+
+    function openLightbox(index) {
+        currentIndex = index;
+        updateLightboxContent(index);
+        lightbox.classList.add('active');
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        lightboxImg.src = '';
+        if (lightboxCaption) lightboxCaption.textContent = '';
+    }
+
+    function showPrev() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        lightboxImg.style.animation = 'none';
+        updateLightboxContent(currentIndex);
+        void lightboxImg.offsetWidth;
+        lightboxImg.style.animation = 'lightboxZoom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+    }
+
+    function showNext() {
+        currentIndex = (currentIndex + 1) % images.length;
+        lightboxImg.style.animation = 'none';
+        updateLightboxContent(currentIndex);
+        void lightboxImg.offsetWidth;
+        lightboxImg.style.animation = 'lightboxZoom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+    }
+
+    if (galleryBtn)    galleryBtn.addEventListener('click', openGallery);
+    if (galleryClose)  galleryClose.addEventListener('click', closeGallery);
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+    if (lightboxPrev)  lightboxPrev.addEventListener('click', showPrev);
+    if (lightboxNext)  lightboxNext.addEventListener('click', showNext);
+
+    images.forEach((img, i) => {
+        img.parentElement.addEventListener('click', () => openLightbox(i));
+    });
+
+    // Music Gallery Logic
+    const musicGalleryBtn   = document.getElementById('musicGalleryBtn');
+    const musicGalleryModal = document.getElementById('musicGalleryModal');
+    const musicGalleryClose = document.getElementById('musicGalleryClose');
+
+    function openMusicGallery() {
+        musicGalleryModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMusicGallery() {
+        musicGalleryModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    if (musicGalleryBtn)   musicGalleryBtn.addEventListener('click', openMusicGallery);
+    if (musicGalleryClose) musicGalleryClose.addEventListener('click', closeMusicGallery);
+
+    // ============================
+    // SECRET LETTER LOGIC
+    // ============================
+    const letterBtn = document.getElementById('letterBtn');
+    const letterModal = document.getElementById('letterModal');
+    const letterClose = document.getElementById('letterClose');
+    const typewriterText = document.getElementById('typewriterText');
+    
+    const secretMessage = "Happy Birthday, si paling mati rasa! 🎂🎉\n\nSemoga panjang umur, sehat selalu, dan selalu dilancarkan dalam segala hal, terutama buat PKL-nya nanti ya! Semoga semua yang ada di wishlist lu dan yang dicita-citakan bisa secepatnya tercapai, gak cuma wacana doang.\n\nBtw, pelan-pelan tolong dikurangin sifat cuek dan dinginnya. Kasian tuh Kutub Utara, masa kalah dingin sama lu? 😂\n\nTetep jadi temen yang asik, dan enjoy hari spesial lu hari ini! ✨";
+    
+    let typeTimeout;
+    
+    function typeWriter(text, i, cb) {
+        if (i < text.length) {
+            typewriterText.innerHTML = text.substring(0, i + 1).replace(/\n/g, '<br/>') + '<span class="cursor">|</span>';
+            typeTimeout = setTimeout(() => typeWriter(text, i + 1, cb), 40);
+        } else {
+            typewriterText.innerHTML = text.replace(/\n/g, '<br/>');
+            if (cb) cb();
+        }
+    }
+
+    function openLetter() {
+        letterModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        clearTimeout(typeTimeout);
+        typewriterText.innerHTML = '';
+        setTimeout(() => typeWriter(secretMessage, 0), 400); // Wait a bit after modal opens
+    }
+    
+    function closeLetter() {
+        letterModal.classList.remove('active');
+        document.body.style.overflow = '';
+        clearTimeout(typeTimeout);
+    }
+    
+    if (letterBtn) letterBtn.addEventListener('click', openLetter);
+    if (letterClose) letterClose.addEventListener('click', closeLetter);
+
+    // Tutup saat klik backdrop
+    galleryModal && galleryModal.addEventListener('click', function(e) {
+        if (e.target === galleryModal) closeGallery();
+    });
+    musicGalleryModal && musicGalleryModal.addEventListener('click', function(e) {
+        if (e.target === musicGalleryModal) closeMusicGallery();
+    });
+    letterModal && letterModal.addEventListener('click', function(e) {
+        if (e.target === letterModal) closeLetter();
+    });
+    lightbox && lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) closeLightbox();
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (galleryModal && galleryModal.classList.contains('active') && e.key === 'Escape') closeGallery();
+        if (musicGalleryModal && musicGalleryModal.classList.contains('active') && e.key === 'Escape') closeMusicGallery();
+        if (letterModal && letterModal.classList.contains('active') && e.key === 'Escape') closeLetter();
+        if (lightbox && lightbox.classList.contains('active')) {
+            if (e.key === 'ArrowLeft') showPrev();
+            if (e.key === 'ArrowRight') showNext();
+        }
+    });
+}());
