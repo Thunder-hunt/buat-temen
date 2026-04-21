@@ -1984,4 +1984,188 @@
         font-size: 20px;
         min-height: 250px;
     }
+}
+
+/* ============================
+   VIRTUAL CAKE BUTTON & MODAL
+   ============================ */
+
+.cake-btn {
+    position: fixed;
+    bottom: 228px; /* stack above letter btn: 162 + 66 = 228 */
+    right: 30px;
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #ff6b6b, #ff4757);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10001;
+    box-shadow: 0 4px 20px rgba(255, 107, 107, 0.5);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    animation: cakePulse 2.8s ease-in-out infinite;
+}
+
+.cake-btn:hover {
+    transform: scale(1.15);
+    box-shadow: 0 8px 30px rgba(255, 107, 107, 0.7);
+}
+
+@keyframes cakePulse {
+    0%, 100% { box-shadow: 0 4px 20px rgba(255, 107, 107, 0.5); }
+    50% { box-shadow: 0 4px 35px rgba(255, 107, 107, 0.9); }
+}
+
+.cake-modal-content {
+    max-width: 450px;
+    background: linear-gradient(145deg, #ffffff, #fefefe);
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    box-shadow: 0 0 40px rgba(255, 107, 107, 0.2);
+}
+
+@keyframes cake-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+@media (max-width: 600px) {
+    .cake-btn {
+        bottom: 194px; /* 136 + 58 */
+        right: 20px;
+        width: 48px;
+        height: 48px;
+        font-size: 20px;
+    }
+}
+
+/* ============================
+   BEAUTIFUL CSS CAKE
+   ============================ */
+
+.css-cake {
+    position: relative;
+    width: 200px;
+    height: 180px;
+    margin: 0 auto 30px;
+    animation: cake-float 3s ease-in-out infinite;
+}
+
+.css-cake * {
+    position: absolute;
+}
+
+.cake-plate {
+    width: 220px;
+    height: 25px;
+    background: #d1d8e0;
+    bottom: 0;
+    left: -10px;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.cake-bottom {
+    width: 200px;
+    height: 70px;
+    background: #ffb8b8;
+    bottom: 12px;
+    border-radius: 10px;
+    box-shadow: inset 0 -10px rgba(0,0,0,0.05);
+}
+
+.cake-top-layer {
+    width: 160px;
+    height: 60px;
+    background: #ffcccc;
+    bottom: 82px;
+    left: 20px;
+    border-radius: 10px;
+    box-shadow: inset 0 -10px rgba(0,0,0,0.05);
+}
+
+.frosting-bottom {
+    width: 200px;
+    height: 25px;
+    background: #fff;
+    bottom: 57px;
+    border-radius: 12px;
+}
+
+.frosting-top {
+    width: 160px;
+    height: 25px;
+    background: #fff;
+    bottom: 117px;
+    left: 20px;
+    border-radius: 12px;
+}
+
+.drip-1, .drip-2, .drip-3, .drip-4 {
+    width: 20px;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.drip-1 { height: 45px; left: 40px; bottom: 82px; }
+.drip-2 { height: 35px; left: 80px; bottom: 82px; }
+.drip-3 { height: 50px; left: 120px; bottom: 82px; }
+.drip-4 { height: 30px; left: 160px; bottom: 82px; }
+
+.candle {
+    width: 12px;
+    height: 45px;
+    background: repeating-linear-gradient(45deg, #fff, #fff 5px, #ff4d4d 5px, #ff4d4d 10px);
+    bottom: 142px;
+    left: 94px;
+    border-radius: 3px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+.flame {
+    width: 16px;
+    height: 26px;
+    background: #ffc312;
+    bottom: 190px;
+    left: 92px;
+    border-radius: 50% 50% 20% 20%;
+    box-shadow: 0 0 15px #ffc312, 0 0 30px #f79f1f, 0 0 45px #ee5a24;
+    animation: flicker 0.15s infinite alternate;
+}
+
+@keyframes flicker {
+    0% { transform: rotate(-3deg) scale(1); opacity: 0.9; }
+    100% { transform: rotate(3deg) scale(1.05); opacity: 1; }
+}
+
+.flame.flicker-wild {
+    animation: flickerWild 0.05s infinite alternate;
+}
+
+@keyframes flickerWild {
+    0% { transform: rotate(-10deg) scale(0.9); opacity: 0.7; }
+    100% { transform: rotate(10deg) scale(1.2); opacity: 1; }
+}
+
+.candle-smoke {
+    width: 10px;
+    height: 10px;
+    background: #bdc3c7;
+    bottom: 185px;
+    left: 95px;
+    border-radius: 50%;
+    filter: blur(4px);
+    opacity: 0;
+}
+
+.candle-smoke.active {
+    animation: smokeRise 2s ease-out forwards;
+}
+
+@keyframes smokeRise {
+    0% { transform: translateY(0) scale(1); opacity: 0.8; }
+    100% { transform: translateY(-80px) scale(5); opacity: 0; }
 }

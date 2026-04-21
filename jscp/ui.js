@@ -1184,7 +1184,39 @@ function startHeartEffect() {
         setTimeout(() => {
             spawnHeartPhotosCentered();
         }, 300);
+        
+        // Grand Closing after heart photos are fully formed
+        setTimeout(() => {
+            triggerGrandClosing();
+        }, 9000);
     });
+}
+
+function triggerGrandClosing() {
+    const canvas = document.querySelector('.canvas');
+    if (canvas) {
+        canvas.style.display = 'block';
+        canvas.style.opacity = '0';
+        canvas.style.transition = 'opacity 2s';
+        
+        requestAnimationFrame(() => {
+            canvas.style.opacity = '1';
+        });
+
+        // Fade out heart photos
+        const photos = document.querySelectorAll('.photo');
+        photos.forEach(p => {
+            p.style.transition = 'opacity 2s, transform 2s';
+            p.style.opacity = '0';
+            p.style.transform = 'translate(-50%, -50%) scale(0.5)';
+            setTimeout(() => p.remove(), 2000);
+        });
+
+        // Start grand closing sequence with dots
+        if (typeof S !== 'undefined' && S.UI) {
+            S.UI.simulate('HAPPY|SWEET 17|LALA!|❤️');
+        }
+    }
 }
 
 function checkBookFinished() {
